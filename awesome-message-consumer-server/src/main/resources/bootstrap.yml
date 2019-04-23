@@ -1,0 +1,10 @@
+spring:
+    cloud:
+        consul:
+            config:
+                enabled: true
+                prefix: config
+                defaultContext: awesome-message-consumer-server
+                profileSeparator: ','
+                data-key: configuration
+                format: YAML

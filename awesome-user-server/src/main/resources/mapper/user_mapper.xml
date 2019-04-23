@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="awesome.user.server.dao.UserDao">
+    <select id="getUserById" resultMap="userMap">
+        SELECT id,name FROM user WHERE id = #{id}
+    </select>
+
+    <resultMap id="userMap" type="awesome.user.server.bean.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <id column="name" jdbcType="VARCHAR" property="name"/>
+    </resultMap>
+</mapper>

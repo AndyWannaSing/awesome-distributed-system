@@ -1,0 +1,26 @@
+spring:
+    application:
+        name: awesome-gateway
+    cloud:
+        consul:
+            host: localhost
+            port: 8500
+            discovery:
+                enabled: true
+                register: true
+                healthCheckInterval: 10s
+                instanceId: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+    sleuth:
+        sampler:
+            probability: 1.0
+
+server:
+    port: 9001
+logging:
+    pattern:
+        level: '[%X{X-B3-TraceId}/%X{X-B3-SpanId}] %-5p [%t] %C{2} - %m%n'
+management:
+    endpoints:
+        web:
+            exposure:
+                include: metrics,env,beans,mappings,health
