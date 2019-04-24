@@ -1,0 +1,10 @@
+spring:
+    cloud:
+        consul:
+            config:
+                enabled: true
+                prefix: config
+                defaultContext: awesome-product-api
+                profileSeparator: ','
+                data-key: configuration
+                format: YAML
